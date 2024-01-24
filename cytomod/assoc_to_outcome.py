@@ -279,7 +279,7 @@ def plotResultSummary(cytomod_obj,
         cbAxh.invert_yaxis()
 
     for lab in order['Module'].unique():
-        y = np.mean(np.arange(order.shape[0])[np.nonzero(order['Module'] == lab)]) - 0.5
+        y = np.mean(np.arange(order.shape[0])[order['Module'] == lab]) - 0.5
         plt.annotate(lab, xy=(0.25, y), ha='center', va='center', rotation=90, color='white', size=12)
 
     """Scale colorbar"""
