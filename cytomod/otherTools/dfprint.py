@@ -1,5 +1,6 @@
 import time
 import subprocess
+import os
 import os.path as op
 
 __all__ = ['toPDF', 'greek2latex']
@@ -35,10 +36,12 @@ def toPDF(df, outFn, titStr, float_format='%1.3g'):
         for f in footer:
             fh.write(f + '\n')
     cmd = ['latex', '-output-format=pdf', '-output-directory=%s' % folder, texFn]
-
-    si = subprocess.STARTUPINFO()
-    si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-    # si.wShowWindow = subprocess.SW_HIDE # default
+    
+    si = None
+    if os.name == "nt":
+        si = subprocess.STARTUPINFO()
+        si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+        # si.wShowWindow = subprocess.SW_HIDE # default
 
     subprocess.call(cmd, startupinfo=si)
     """Run latex twice to get the layout correct"""
