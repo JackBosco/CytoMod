@@ -9,7 +9,7 @@ __all__ = ['toPDF', 'greek2latex']
 def toPDF(df, outFn, titStr, float_format='%1.3g'):
     folder, fn = op.split(outFn)
     df = df.applymap(lambda s: s if not isinstance(s, str) else s.replace('_', '-'))
-    df = df.rename_axis(lambda s: s.replace('_', '-'), axis=1)
+    df = df.rename(lambda s: s.replace('_', '-'), axis=1)
     texFn = outFn[:-3] + 'tex'
     header = ['\\documentclass[10pt]{article}',
               '\\usepackage{lmodern}',

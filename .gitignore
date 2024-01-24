@@ -128,3 +128,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+data_files/output/associations/associations_abs.png
+data_files/output/associations/associations_adj_mod_pvals.tex
+data_files/output/associations/associations_adj.png
